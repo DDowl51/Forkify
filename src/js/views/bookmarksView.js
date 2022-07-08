@@ -4,7 +4,18 @@ import previewView from './previewView';
 class BookmarksView extends previewView {
   _parentElement = document.querySelector('.bookmarks__list');
   _errorMessage = 'No bookmarks yet. Find a nice recipe and bookmark it!!';
-  _message = '';
+  _message = 'No bookmarks yet. Find a nice recipe and bookmark it!!';
+
+  render(data) {
+    if (!data || (Array.isArray(data) && !data.length))
+      return this.renerMessage();
+
+    this._data = data;
+    const markup = this._generateMarkup();
+    this._clear();
+    // console.log(this._parentElement);
+    this._parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
 
   addHandlerRender(handler) {
     window.addEventListener('load', handler);
