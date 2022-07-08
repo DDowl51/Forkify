@@ -8,7 +8,7 @@ class BookmarksView extends previewView {
 
   render(data) {
     if (!data || (Array.isArray(data) && !data.length))
-      return this.renerMessage();
+      return this.renderMessage();
 
     this._data = data;
     const markup = this._generateMarkup();
